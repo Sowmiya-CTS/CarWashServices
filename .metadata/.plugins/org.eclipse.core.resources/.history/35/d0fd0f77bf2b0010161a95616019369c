@@ -1,0 +1,46 @@
+import org.testng.ITestContext;
+import org.testng.ITestListener;
+import org.testng.ITestResult;
+
+public class ListnersClass implements ITestListener{
+
+	public void onStart(ITestContext context) {
+		System.out.println("Start execution"+context);
+	}
+	@Override
+	public void onTestStart(ITestResult result) {
+		// TODO Auto-generated method stub
+		//ITestListener.super.onTestStart(result);
+		System.out.println("test started"+result)	;
+		}
+
+	@Override
+	public void onTestSuccess(ITestResult result) {
+		System.out.println("test success"+result)	;
+	}
+
+	@Override
+	public void onTestFailure(ITestResult result) {
+		System.out.println("test failure"+result)	;
+	}
+
+	@Override
+	public void onTestSkipped(ITestResult result) {
+		System.out.println("test skipped"+result)	;
+	}
+
+	@Override
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
+		System.out.println("test with success percent"+result)	;
+	}
+
+	//@Override
+//	public void onTestFailedWithTimeout(ITestResult result) {
+//		
+//	}
+//	public void onFinish(ITestContext context) {
+//		
+//	}
+	
+
+}

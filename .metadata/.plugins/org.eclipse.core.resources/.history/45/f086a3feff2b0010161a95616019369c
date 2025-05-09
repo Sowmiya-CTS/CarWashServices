@@ -1,0 +1,30 @@
+package practice;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
+
+import org.testng.annotations.*;
+
+public class LoginTest {
+	
+	WebDriver driver;
+	void setUp(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	@BeforeSuite
+	void setUp(String browser) throws Exception{
+		if(browser.equalsIgnoreCase("chrome")) {
+			driver=new ChromeDriver();
+		}else if(browser.equalsIgnoreCase("firefox")) {
+			driver=new FirefoxDriver();
+		}else {
+			throw new Exception("Unsupported Browser");
+		}
+	}
+	@BeforeClass
+	void login() {
+		Login.login();
+	}
+}

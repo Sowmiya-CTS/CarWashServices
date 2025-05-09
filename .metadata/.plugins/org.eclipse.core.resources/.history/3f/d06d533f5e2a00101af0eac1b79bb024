@@ -1,0 +1,81 @@
+package FlipkartPages;
+
+import java.time.Duration;
+import java.util.Set;
+
+//import static org.testng.Assert.assertTrue;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
+public class AddToCart {
+	WebDriver driver;
+	SoftAssert sa=new SoftAssert();
+	
+//	@FindBy(how=How.XPATH , xpath="//button[@class='QqFHMw vslbG+ In9uk2']")
+//	WebElement cartButton;
+	
+	@FindBy(how=How.XPATH ,xpath="//div[@class='ZuSA--']")
+	WebElement checkCart;
+	
+	@FindBy(how=How.XPATH,xpath="//div[normalize-space()='Remove']")
+	WebElement removeItem;
+	
+	@FindBy(how=How.XPATH,xpath="//div[@class='sBxzFz fF30ZI A0MXnh']")
+	WebElement removeAgain;
+	
+	@FindBy(how=How.CLASS_NAME,className="eIDgeN")
+	WebElement msg;
+	
+	public AddToCart(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	
+	void chooseItem() {
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		WebElement choose = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[normalize-space()='Apple iPhone 14 (Midnight, 256 GB)']")));
+		choose.click();
+		
+	}
+	public void switchToNewWindow() {
+        String originalWindow = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for (String window : allWindows) {
+            if (!window.equals(originalWindow)) {
+                driver.switchTo().window(window);
+                break;  // Switches to the new window
+            }
+        }
+    }
+	void addItemToCart() {
+		switchToNewWindow();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+		WebElement cartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[@class='QqFHMw vslbG+ In9uk2']")));
+		cartButton.click();
+
+		System.out.println("Item added successfully");
+	}
+	
+	void validateCart() {
+		checkCart.click();
+		boolean displayKart=checkCart.isDisplayed();
+		sa.assertTrue(displayKart);
+		sa.assertAll();
+		
+	}
+	
+	void removeItemFromCart() {
+		removeItem.click();
+		removeAgain.click();
+		String display=msg.getText();
+		sa.assertEquals(display,"Item removed successfully");
+	}
+}

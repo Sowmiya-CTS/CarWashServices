@@ -1,0 +1,99 @@
+package FlipkartPages;
+
+import java.time.Duration;
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.asserts.SoftAssert;
+
+public class AddToCart {
+    private WebDriver driver;
+    private SoftAssert sa = new SoftAssert();
+    public JavascriptExecutor js = (JavascriptExecutor) driver;
+    
+
+    @FindBy(how = How.XPATH, xpath = "//button[contains(@class, 'QqFHMw')]")
+    private WebElement addToCartButton;
+
+    @FindBy(how = How.XPATH, xpath = "//div[@class='ZuSA--']")
+    private WebElement checkCart;
+
+    @FindBy(how = How.XPATH, xpath = "//div[normalize-space()='Remove']")
+    private WebElement removeItem;
+
+    @FindBy(how = How.CLASS_NAME, className = "eIDgeN")
+    private WebElement confirmationMessage;
+
+    public AddToCart(WebDriver driver) {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
+    }
+
+    public void chooseItem() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement choose = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[normalize-space()='Apple iPhone 14 (Midnight, 256 GB)']")));
+        choose.click();
+    }
+
+    public void switchToNewWindow() {
+        String originalWindow = driver.getWindowHandle();
+        Set<String> allWindows = driver.getWindowHandles();
+
+        for (String window : allWindows) {
+            if (!window.equals(originalWindow)) {
+                driver.switchTo().window(window);
+                break;
+            }
+        }
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//button[contains(@class, 'QqFHMw')]")));
+    }
+
+    public void addItemToCart() {
+    	
+    	
+    	
+        switchToNewWindow();  
+        
+        js.executeScript("window.scrollBy(0,600)");
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        WebElement cartButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(@class, 'QqFHMw')]")));
+        Actions actions=new Actions(driver);
+    	actions.moveToElement(cartButton).perform();
+        
+        cartButton.click();
+        System.out.println("Item added successfully.");
+    }
+
+
+    public void validateCart() {
+        checkCart.click();
+        boolean displayKart = checkCart.isDisplayed();
+        sa.assertTrue(displayKart);
+        sa.assertAll();
+    }
+    
+    
+    public void removeItemFromCart() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(removeItem));
+        js.executeScript("window.scrollBy(0,600)");
+        removeItem.click();
+        WebElement removeAgain = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='sBxzFz fF30ZI A0MXnh']")));
+        removeAgain.click();
+        WebElement msg = wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("eIDgeN")));
+        String display = msg.getText();
+        sa.assertEquals(display, "Item removed successfully.");
+        sa.assertAll();
+    }
+
+}

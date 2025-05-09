@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="MavenProjectWizardLocationPage">
+		<list key="location">
+			<item value="C:\Users\2393068\eclipse-workspace\test\bin\practice\BookShelves"/>
+			<item value="C:\Users\2393068\eclipse-workspace\test\bin\practice\SeleniumJava\src\MiniProject\SearchForSchools.java"/>
+			<item value="C:\Users\2393068\eclipse-workspace\test\bin\practice\SeleniumMaven\pom.xml"/>
+			<item value="C:\Users\2393068\eclipse-workspace\test\bin\practice\JavaSelenium\src\Practice\JSelenium.java"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArchetypePage">
+		<item key="catalog" value="internal"/>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+	</section>
+	<section name="Maven2ProjectWizardArchifactPage">
+		<list key="package">
+			<item value="pageObjects"/>
+			<item value="Hackthon.CarWashServices"/>
+			<item value="MakeMyTrip.MakeMyTrip"/>
+			<item value="BookShelves_FinalProject.BookShelves"/>
+			<item value="SeleniumAutomationWithTESTNG.HandsOn"/>
+			<item value="Automationdemo.SeleniumMaven"/>
+			<item value="Automationdemo.Seleniumautomation"/>
+		</list>
+		<list key="groupId">
+			<item value="CarWashServices"/>
+			<item value="Hackthon"/>
+			<item value="MakeMyTrip"/>
+			<item value="BookShelves_FinalProject"/>
+			<item value="SeleniumAutomationWithTESTNG"/>
+			<item value="Automationdemo"/>
+		</list>
+		<list key="artifactId">
+			<item value="CarWashServices"/>
+			<item value="MakeMyTrip"/>
+			<item value="BookShelves"/>
+			<item value="HandsOn"/>
+			<item value="SeleniumMaven"/>
+			<item value="Seleniumautomation"/>
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="MavenProjectWizardArtifactPage">
+		<list key="groupId">
+		</list>
+		<list key="name">
+		</list>
+		<list key="artifactId">
+		</list>
+		<list key="projectNameTemplate">
+			<item value="[artifactId]"/>
+			<item value="[artifactId]-TRUNK"/>
+			<item value="[artifactId]-[version]"/>
+			<item value="[groupId].[artifactId]"/>
+			<item value="[groupId].[artifactId]-[version]"/>
+			<item value="[name]"/>
+		</list>
+		<list key="version">
+			<item value="0.0.1-SNAPSHOT"/>
+		</list>
+	</section>
+	<section name="org.eclipse.m2e.core.pom.overview">
+	</section>
+	<section name="org.eclipse.m2e.core.pom.dependencies">
+	</section>
+	<section name="org.eclipse.m2e.core.ui.internal.wizards.CustomArchetypeDialog">
+	</section>
+</section>

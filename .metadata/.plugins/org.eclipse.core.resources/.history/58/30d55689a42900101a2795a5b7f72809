@@ -1,0 +1,13 @@
+package FlipKart;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.PageFactory;
+
+public class createDriver {
+	private static final SearchContext WebDriver = null;
+	WebDriver driver;
+	
+	public createDriver(WebDriver driver) {
+		PageFactory.initElements(WebDriver driver, this);
+	}
+
+}
